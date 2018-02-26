@@ -44,27 +44,25 @@ function initializeGame() {
 function writeToScreen(htmlElement, newValue) {
     htmlElement.innerHTML = newValue;
     console.log("You just printed ", newValue, " to the screen");
-}
+}//One f(x) to handle all of the screen printing capabilities
 
 function documentHistory(newGuess, array) {
     array.push(newGuess);
     writeToScreen(guessHistory,array);
     console.log("Your guess history is ", array);
     return array;
-}
+}//Store all of the user's guesses in an array and print them to the screen
 
 function guessesRemaining(limit) {
     limit--;
     console.log("Your new limit is ", limit);
     writeToScreen(remaining,limit);
     return limit;
-}
+}//
 
 var psychicGame = ["a","b","c","d","e","f","g","h","i","j","k","l","m",
                   "n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-
-//console.log (psychicGame);
 var userGuess = document.getElementById("user-guess");
 var wins = document.getElementById("user-wins");
 var losses = document.getElementById("user-losses");
@@ -81,12 +79,11 @@ var randomNum = 0;
 //The computer should have to guess first otherwise it's like National Lampoon's Vegas Vacation
 initializeGame();
 alert("Welcome back to the Psychic Friends Network");
-//Only listen for events while the game is ongoing
 
-  
 document.onkeyup = function (event) {
     var keyPressed = event.key;
 
+    //Only listen for events while the game is ongoing
     if (maxGuesses === 0) {
         numLosses++;
         writeToScreen(losses,numLosses);
@@ -121,7 +118,6 @@ document.onkeyup = function (event) {
         }
         else {
             maxGuesses = guessesRemaining(maxGuesses);
-            //alert("You have " + maxGuesses + " remaining");
         }
     }
 }
